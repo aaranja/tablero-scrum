@@ -1,0 +1,27 @@
+.task-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* Card look */
+    transition: 0.3s;
+    background-color: white;
+    border-radius: 4px;
+    /* Round corners */
+    border-left: 5px solid #5f37ff;
+    /* Blue left border */
+}
+
+.task-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.task-list{
+    border: 1px solid #EFEFEF;
+    margin: 5px;
+    border-radius: 2px;
+}
+.card-icon{
+    font-size: larger;
+}
+
+.card-icon:hover {
+   color: #0AA1DD;
+}
