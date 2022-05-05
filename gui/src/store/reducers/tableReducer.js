@@ -28,7 +28,6 @@ const boardReadStart = (state) => {
 }
 
 const boardReadSuccess = (state, action) => {
-    // let data = state.payload;
     let data = action.payload
 
     return updateObject(state, {
@@ -43,6 +42,7 @@ const createTaskStart = (state) => {
 }
 
 const createTaskSuccess = (state, action) => {
+    /* create task action will add it into current pending list */
     let data = action.payload;
 
     let pending = [...state.payload.pending, data]
@@ -55,6 +55,7 @@ const createTaskSuccess = (state, action) => {
 }
 
 const deleteTaskSuccess = (state, action) => {
+     /* delete task action will delete it from current pending list */
     let data = action.payload;
 
     let pending = state.payload.pending.filter(item => item.id !== data.id)
@@ -67,9 +68,10 @@ const deleteTaskSuccess = (state, action) => {
 }
 
 const updateTaskSuccess = (state, action) => {
+    /* update task action will transfer it from current status list to new status list */
     let data = action.payload;
     let current_data = {...state.payload}
-    // remove from current
+    // remove task from old status list and added it into new status list
     let current_status = state.payload[data.status].filter(item => item.id !== data.task.id)
     let new_status = [data.task, ...state.payload[data.task.status]]
 
@@ -82,7 +84,6 @@ const updateTaskSuccess = (state, action) => {
 }
 
 const failAction = (state, action, status) => {
-    console.log("action error", action.error)
     return updateObject(state, {
         error: action.error, loading: false, status: status,
     });

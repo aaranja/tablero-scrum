@@ -5,6 +5,10 @@ from .serializers import TaskSerializer
 
 
 class TaskView(views.APIView):
+    """
+    View to get, create, delete and update tasks.
+    Rute: /scrumboard/task
+    """
     serializer = TaskSerializer
 
     @staticmethod
@@ -55,7 +59,6 @@ class TaskView(views.APIView):
             "status": task.status
         }
         if serializer.is_valid():
-            print("es válido")
             new_task = serializer.save()
             data["task"] = self.serialize_task(new_task)
         else:

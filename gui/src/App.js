@@ -5,6 +5,7 @@ import {Container, Navbar} from "react-bootstrap";
 
 
 function App() {
+    /* default app loaded in index, here is where ScrumBoard and navbar are displayed */
     return (<>
             <Navbar bg="light">
                 <Container style={{justifyContent: "center", display: "flex"}}>

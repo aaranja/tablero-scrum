@@ -1,4 +1,5 @@
 export const updateObject = (oldObject, updateProperties) => {
+    /* merge objects */
     return {
         ...oldObject,
         ...updateProperties,

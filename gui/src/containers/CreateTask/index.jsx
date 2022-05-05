@@ -4,9 +4,14 @@ import {connect} from "react-redux";
 import {createTask} from "../../store/actions/tableActions";
 
 class CreateTask extends Component {
+    /*
+    * Class to render a modal form used to create a new pending task.
+    * A Button component will be displayed by default, clicking on it will display the modal instead
+    * */
 
     constructor(props) {
         super(props);
+        // state flag to show the modal
         this.state = {
             show: false,
         }
@@ -25,6 +30,7 @@ class CreateTask extends Component {
     }
 
     onFormSubmit = e => {
+        /* Get form values to send it to server through redux action*/
         e.preventDefault()
         let values = {}
         values['description'] = e.target.taskDescription.value;
@@ -32,6 +38,8 @@ class CreateTask extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        /* Pressing save button will cause a state change, so check status state to detect it,
+        and act as expected if everything is fine, show an error if it's not*/
         if (prevProps.status === "loading") {
             const {status} = this.props;
             if (status === "created") {
@@ -95,11 +103,9 @@ class CreateTask extends Component {
 const mapStateToProps = (state) => {
 
     const {table} = state;
-    console.log("create", table.error)
 
     return {
-        error: table.error,
-        status: table.status
+        error: table.error, status: table.status
     }
 }
 

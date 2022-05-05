@@ -5,6 +5,9 @@ from .models import Task
 
 
 class TaskSerializer(serializers.Serializer):
+    """
+    Serializer of task model, to validate data for create and update
+    """
     description = serializers.CharField()
     status = serializers.CharField(required=False)
 
@@ -16,6 +19,7 @@ class TaskSerializer(serializers.Serializer):
         }
 
     def validate(self, data):
+        # set status=pending default on create
         if data.get('status', None) is None:
             data['status'] = "pending"
         return data
